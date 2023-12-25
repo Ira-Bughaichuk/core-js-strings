@@ -169,7 +169,7 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeLastOccurrences(str, value) {
-  const regex = new RegExp(value + "(?=[^' + value + ']*$)");
+  const regex = new RegExp(`${value}(?=[^' + value + ']*$)`);
   return str.replace(regex, '');
 }
 
@@ -474,7 +474,7 @@ function unbracketTag(str) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
- function extractEmails(str) {
+function extractEmails(str) {
   const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
 
   const matches = str.match(emailRegex);
@@ -542,8 +542,22 @@ function encodeToRot13(str) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
- function getCardId(value) {
-  const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+function getCardId(value) {
+  const ranks = [
+    'A',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    'J',
+    'Q',
+    'K',
+  ];
   const suits = ['♣', '♦', '♥', '♠'];
   const rank = value.slice(0, -1);
   const suit = value.slice(-1);
